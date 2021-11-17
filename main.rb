@@ -11,6 +11,7 @@ class LinkedList
     # if @tail is nil, set @tail to current node
     # else set @tail's next_node current node
     # Update @tail to current node
+    # if @size.zero? set @head to current node
     # Add one to @size
   end
 
@@ -18,6 +19,7 @@ class LinkedList
     # If @head is nil, set @head to current node
     # else set current node's next_node to @head
     # Update @head to current node
+    # If @size.zero? set @tail to current node
     # Add one to @size
   end
 
