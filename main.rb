@@ -49,6 +49,10 @@ class LinkedList
   end
 
   def pop
+    @tail = at(@size - 2)
+    popped = @tail.next_node
+    @tail.next_node = nil
+    popped
   end
 
   def contains?(value)
