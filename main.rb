@@ -56,12 +56,36 @@ class LinkedList
   end
 
   def contains?(value)
+    current_node = @head
+    @size.times do
+      return true if current_node.data == value
+
+      current_node = current_node.next_node
+    end
+
+    false
   end
 
   def find(value)
+    current_node = @head
+    @size.times do |i|
+      return i if current_node.data == value
+
+      current_node = current_node.next_node
+    end
   end
 
   def to_s
+    return '()' if @head.nil?
+
+    current_node = @head
+    current_data = current_node.data
+    until current_node.nil?
+      print "( #{current_data} ) -> "
+      current_node = current_node.next_node
+      current_data = current_node.data unless current_node.nil?
+    end
+    puts '( nil )'
   end
 end
 
