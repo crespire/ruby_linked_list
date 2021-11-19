@@ -55,6 +55,12 @@ class LinkedList
     popped
   end
 
+  def shift
+    shifted = @head
+    @head = shifted.next_node
+    shifted
+  end
+
   def contains?(value)
     current_node = @head
     @size.times do
@@ -94,6 +100,8 @@ class LinkedList
     new_node = value.is_a?(Node) ? value : Node.new(value)
     if index.zero?
       prepend(new_node)
+    elsif index == @size
+      append(new_node)
     else
       insertion_node = at(index - 1)
       next_node = at(index)
@@ -107,7 +115,7 @@ class LinkedList
     return unless index.between?(0, @size)
 
     if index.zero?
-      @head = @head.next_node
+      shift
     elsif index == @size
       pop
     else
