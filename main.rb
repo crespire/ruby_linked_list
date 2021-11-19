@@ -87,6 +87,36 @@ class LinkedList
     end
     puts '( nil )'
   end
+
+  def insert_at(value, index)
+    return unless index.between?(0, @size)
+
+    new_node = value.is_a?(Node) ? value : Node.new(value)
+    if index.zero?
+      prepend(new_node)
+    else
+      insertion_node = at(index - 1)
+      next_node = at(index)
+      insertion_node.next_node = new_node
+      new_node.next_node = next_node
+    end
+    true
+  end
+
+  def remove_at(index)
+    return unless index.between?(0, @size)
+
+    if index.zero?
+      @head = @head.next_node
+    elsif index == @size
+      pop
+    else
+      parent_node = at(index - 1)
+      after_node = at(index + 1)
+      parent_node.next_node = after_node
+    end
+    true
+  end
 end
 
 class Node
